@@ -5,6 +5,10 @@
 #include <string>
 #include <vector>
 
+#include <hpx/local/algorithm.hpp>
+#include <hpx/local/execution.hpp>
+#include <hpx/local/init.hpp>
+
 #include "matrix.h"
 
 using std::string;
@@ -55,12 +59,12 @@ matrix matrix::_multiply(const matrix& matrix1, const matrix& matrix2) {
     if (R1 == 0 || R2 == 0 || C1 != R2) { throw std::runtime_error("invalid matrices"); }
 
     std::vector<std::vector<double>> result(R1, std::vector<double>(C2));
-    for (int i = 0; i < R1; i++) {
-        for (int j = 0; j < C2; j++) {
+    hpx::for_loop(hpx::execution::par, 0, R1, [&](auto i) {
+        hpx::for_loop(0, C2, [&](auto j) {
             result[i][j] = 0;
-            for (int k = 0; k < R2; k++) { result[i][j] += matrix1(i, k) * matrix2(k, j); }
-        }
-    }
+            hpx::for_loop(0, R2, [&](auto k) { result[i][j] += matrix1(i, k) * matrix2(k, j); });
+        });
+    });
 
     return matrix(result);
 }
