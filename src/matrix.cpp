@@ -45,6 +45,7 @@ bool matrix::_generate(const size_t rows, const size_t columns) {
     std::mt19937 randEngine(std::random_device {}());
     std::uniform_real_distribution<double> randDistribution(0.1, 1000.0);
 
+    // ! parallellizing this messes up the random number generation
     for (size_t r = 0; r < rows; r++) {
         for (size_t c = 0; c < columns; c++) { _matrix[r][c] = randDistribution(randEngine); };
     };
