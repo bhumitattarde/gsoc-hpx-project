@@ -11,7 +11,7 @@ using std::string;
 
 class matrix {
   public:
-    //   constructors
+    // constructors
     matrix() = delete;
     matrix(const size_t rows, const size_t columns, bool random = true);
     matrix(const std::vector<std::vector<double>>& matrix);
@@ -26,7 +26,7 @@ class matrix {
     double operator()(int rowPos, int columnPos) const;
 
   private:
-    //   member vars
+    // member vars
     const size_t _rows = 0;
     const size_t _columns = 0;
     std::vector<std::vector<double>> _matrix {};

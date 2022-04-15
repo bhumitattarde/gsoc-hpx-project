@@ -17,7 +17,6 @@ matrix::matrix(const size_t rows, const size_t columns, bool random)
 matrix::matrix(const std::vector<std::vector<double>>& matrix)
     : _matrix(matrix), _rows(matrix.size()), _columns(matrix[0].size()) {}
 
-// methods
 void matrix::print() {
     const size_t rows = _matrix.size();
     const size_t columns = _matrix[0].size();
@@ -34,7 +33,6 @@ size_t matrix::rows() const noexcept { return _rows; }
 
 size_t matrix::colmuns() const noexcept { return _columns; }
 
-// operator overloads
 matrix matrix::operator*(const matrix& rhs) { return _multiply(*this, rhs); }
 
 double matrix::operator()(int rowPos, int columnPos) const { return _matrix[rowPos][columnPos]; }
