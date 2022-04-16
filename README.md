@@ -2,6 +2,15 @@
 
 This program parallelly multiplies two randomly generated matrices using [HPX](https://github.com/STEllAR-GROUP/hpx).
 
+## Table of contents
+
+- [Matrix multiplication using HPX](#matrix-multiplication-using-hpx)
+  - [Table of contents](#table-of-contents)
+  - [Building](#building)
+  - [Running](#running)
+  - [Example](#example)
+  - [License](#license)
+
 ## Building
 
 1. [Install CMAKE](https://cmake.org/install/).
